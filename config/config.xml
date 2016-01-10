@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<bean id="user" class="Model.User">
+		<property name="id" value="1"/>
+		<property name="name" value="wcb"/>
+	</bean>
+	
+	<aop id="logAspect" ref="aopTest">   
+            <pointcut id="logger" expression="* com.controller.UserController.getName(..)"></pointcut>  
+            <!-- type类型表示是after类型还是before类型 -->
+            <method type="after" pointcut-ref="logger" method="After"></method>  
+    </aop> 
+    
+    <bean id="aopTest" class="com.Aop.AopTest"></bean>
+</beans>
