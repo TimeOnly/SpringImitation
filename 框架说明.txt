@@ -1,0 +1,69 @@
+   1.IOC说明
+   
+    IOC有两种情况,一种是注解,一种是xml
+	
+	1.1 注解
+	 
+	 @Controller 代表你想让这个类受容器管理,id值是在容器中的key.
+	 
+	 @Column 代表你这个对象需要注入,id值就是在容器中的key,会将key所对应的对象注进你这个对象。
+	 
+	 @RequestMapper 请求映射 id值是映射值 一个请求格式是这样子 项目名/@Controller注解的id值/@RequestMapper注解的值,后面加上web.xml里配置的.do后缀
+	 
+	1.2 xml
+	   <bean>标签
+	    
+	      id属性值是容器中的key
+		  
+		  Class属性值就是要受容器管理的对象(需要把类的路径写全)
+		  
+		<property>标签
+		   
+		   name属性名称
+	
+		   ref属性值 存放非基本数据类型的引用,即在容器中的key,会将key所对应的对象注进这个属性
+		
+		   value属性 存放基本数据类型的值 
+		   
+		   ps:有ref属性就没value属性，二者挑一。
+		   
+		  
+	   
+
+	2.AOP说明
+	
+	  目前AOP仅支持xml方式 
+	  
+	  2.1 xml
+	    <aop>标签
+		
+		  ref值是切面类的路径
+		  
+		  <pointcut>标签
+		  
+		    id值就是method标签的pointcut-ref属性所引用的值
+		  
+		    expression值就是规定了哪些类的哪些方法可以触发AOP
+			
+		  <method>标签
+
+            type属性值表示是after类型还是before类型	
+
+            pointcut-ref属性引用pointcut标签的id值 
+
+            method 切面方法
+
+
+  	3. 项目目前已知的缺点
+
+        1)请求不能传参
+
+        2) aop 每个aop标签内只能对应一个pointcut与method标签
+
+     因为时间关系，没有太多时间去完善这个项目，所以等以后有时间再慢慢完善与扩展。
+
+
+                                                   完。	 
+	 
+	 
+	 
